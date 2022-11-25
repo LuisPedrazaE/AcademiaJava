@@ -1,9 +1,5 @@
 package com.TiendaLibros.Int;
 
-import com.TiendaLibros.Abs.Ciencia;
-import com.TiendaLibros.Abs.Fantasia;
-import com.TiendaLibros.Abs.Libro;
-import com.TiendaLibros.Abs.SciFi;
 
 public class Tienda {
 
@@ -13,12 +9,11 @@ public class Tienda {
 		   
 	    
 		   //Se instancian y cargan los libros
-		    Libro libro1 = new Fantasia("Harry Potter", 18.53, 6, true, "J.K. Rowling");
-		    Libro libro2 = new SciFi("Duna", 21.2, 20, true, "Frank Herbert");
-		    Libro libro3  = new Ciencia("El origen de las especies", 30.2, 5, true, "Charles Darwin");
+		    Libro libro1 = new Fantasia("Harry Potter 2", 18.53, 6, "J.K. Rowling");
+		    Libro libro2 = new SciFi("Duna 2", 21.2, 20, "Frank Herbert");
+		    Libro libro3  = new Ciencia("El origen de las especies 2", 30.2, 5, "Charles Darwin");
 		    
-		    //Se crea el array "catálogo" para contener los libros. Su dimensión viene del número de veces que se
-		    //instancia el constructor de Libro
+		    //Se crea el array "catálogo" para contener los libros.
 		    Libro catalogo[];
 		    catalogo = new Libro[3];
 		    

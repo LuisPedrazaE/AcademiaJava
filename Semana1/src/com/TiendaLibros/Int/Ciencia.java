@@ -2,32 +2,47 @@ package com.TiendaLibros.Int;
 
 public class Ciencia implements Libro{
 	
+	  String nombre;
+	  double precioUnit;
+	  int cantStock;
+	  //boolean disponible;
+	  String autor;
+	  
+	//Constructors
+	  public Ciencia() { }
+	  public Ciencia(String nombre, double precioUnit, int cantStock, String autor) {
+	    this.nombre   = nombre;
+	    this.precioUnit = precioUnit;
+	    this.cantStock  = cantStock;
+	    //this.disponible = disponible;
+	    this.autor = autor;
+	    
+	  }
+	
 	//Methods
 	  @Override
 	  public String toString() {
-	    return  "Nombre: "      +this.nombre()+    " "+
-	        "Precio unidad: " +this.precioUnit()+  " $ "+
-	        "En Stock: "    +this.cantStock()+ " ";
+	    return  "Nombre: "      +getNombre()+    " "+
+	        "Precio unidad: " +getPrecioUnit()+  " $ "+
+	        "En Stock: "    +getCantStock()+ " "+
+	        "Autor: " +getAutor();
 	  }
 	  
-	  
-
-	@Override
-	public String nombre() {
-		// TODO Auto-generated method stub
-		return nombre();
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public double getPrecioUnit() {
+		return precioUnit;
+	}
+	
+	public int getCantStock() {
+		return cantStock;
+	}
+	
+	public String getAutor() {
+		return autor;
 	}
 
-	@Override
-	public double precioUnit() {
-		// TODO Auto-generated method stub
-		return precioUnit();
-	}
-
-	@Override
-	public int cantStock() {
-		// TODO Auto-generated method stub
-		return cantStock();
-	}
-
+	
 }
