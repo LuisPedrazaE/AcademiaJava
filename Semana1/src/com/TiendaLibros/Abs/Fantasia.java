@@ -18,9 +18,9 @@ public class Fantasia extends Libro {
 	  //Metodo
 	  @Override
 	  public String toString() {
-	    return  "Libro de Fantasia "+
+	    return  "Libro de Fantasia: "+
 	        super.toString()+
-	        "Autor: "  +this.autor;
+	        "[Autor: "  +this.autor;
 	  }
 	  
 	  //Gets and Sets

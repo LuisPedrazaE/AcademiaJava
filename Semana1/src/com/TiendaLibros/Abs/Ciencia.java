@@ -18,9 +18,9 @@ public class Ciencia extends Libro {
 	  //Metodo
 	  @Override
 	  public String toString() {
-	    return  "Libro de Ciencia "+
+	    return  "Libro de Ciencia: "+
 	        super.toString()+
-	        "Autor: "  +this.autor;
+	        "[Autor: "  +this.autor;
 	  }
 	  
 	  //Gets and Sets

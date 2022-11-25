@@ -7,7 +7,6 @@ public abstract class Libro {
 	  private double precioUnit;
 	  private int cantStock;
 	  private boolean disponible = false;
-	  public static int dimesionArray;
 	  
 	  
 	  //Constructors
@@ -25,7 +24,7 @@ public abstract class Libro {
 	  @Override
 	  public String toString() {
 	    return  "Nombre: "      +this.getNombre()+    " "+
-	        "Precio unidad: " +this.getPrecioUnit()+  " € "+
+	        "Precio unidad: " +this.getPrecioUnit()+  " $ "+
 	        "En Stock: "    +this.getCantStock()+ " ";
 	  }
 	  

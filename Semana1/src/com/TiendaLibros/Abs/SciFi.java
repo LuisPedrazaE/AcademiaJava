@@ -18,9 +18,9 @@ public class SciFi extends Libro {
 	  //Metodo
 	  @Override
 	  public String toString() {
-	    return  "Libro de SciFi "+
+	    return  "Libro de SciFi: "+
 	        super.toString()+
-	        "Autor: "  +this.autor;
+	        "[Autor: "  +this.autor;
 	  }
 	  
 	  //Gets and Sets

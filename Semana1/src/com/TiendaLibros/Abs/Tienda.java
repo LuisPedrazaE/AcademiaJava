@@ -10,12 +10,11 @@ public class Tienda {
 	   
 	    
 	   //Se instancian y cargan los libros
-	    Libro libro1 = new Fantasia("Harry Potter", 18.53, 6, true, "J.K. Rowling");
-	    Libro libro2 = new SciFi("Duna", 21.2, 20, true, "Frank Herbert");
-	    Libro libro3  = new Ciencia("El origen de las especies", 30.2, 5, true, "Charles Darwin");
+	    Libro libro1 = new Fantasia("Harry Potter,", 18.53, 6, true, "J.K. Rowling]");
+	    Libro libro2 = new SciFi("Duna,", 21.2, 20, true, "Frank Herbert]");
+	    Libro libro3  = new Ciencia("El origen de las especies,", 30.2, 5, true, "Charles Darwin]");
 	    
-	    //Se crea el array "catálogo" para contener los libros. Su dimensión viene del número de veces que se
-	    //instancia el constructor de Libro
+	   
 	    Libro catalogo[];
 	    catalogo = new Libro[3];
 	    
