@@ -27,9 +27,9 @@ public class JpaConfig {
     public DataSource mySqlDataSource()
     {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.url("jdbc:mysql://localhost:3306/employee_directory?useSSL=false&serverTimezone=UTC");
-        dataSourceBuilder.username("webstudent");
-        dataSourceBuilder.password("webstudent");
+        dataSourceBuilder.url("jdbc:mysql://localhost:3306/web_huesped_tracker?useSSL=false&serverTimezone=UTC");
+        dataSourceBuilder.username("webhuesped");
+        dataSourceBuilder.password("webhuesped");
         return dataSourceBuilder.build();
     }
 }

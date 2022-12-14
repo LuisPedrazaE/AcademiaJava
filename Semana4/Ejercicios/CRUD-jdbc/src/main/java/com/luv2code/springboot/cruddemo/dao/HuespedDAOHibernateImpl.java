@@ -9,62 +9,62 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.luv2code.springboot.cruddemo.entity.Employee;
+import com.luv2code.springboot.cruddemo.entity.Huesped;
 
 @Repository
-public class EmployeeDAOHibernateImpl implements EmployeeDAO {
+public class HuespedDAOHibernateImpl implements HuespedDAO {
 
 	// define field for entitymanager	
 	private EntityManager entityManager;
 		
 	// set up constructor injection
 	@Autowired
-	public EmployeeDAOHibernateImpl(EntityManager theEntityManager) {
+	public HuespedDAOHibernateImpl(EntityManager theEntityManager) {
 		entityManager = theEntityManager;
 	}
 	
 	
 	@Override
-	public List<Employee> findAll() {
-		System.out.println("EmployeeDAOHibernateImpl");
+	public List<Huesped> findAll() {
+		System.out.println("HuespedDAOHibernateImpl");
 		// get the current hibernate session
 		Session currentSession = entityManager.unwrap(Session.class);
 		
 		// create a query
-		Query<Employee> theQuery =
-				currentSession.createQuery("from Employee", Employee.class);
+		Query<Huesped> theQuery =
+				currentSession.createQuery("from Huesped", Huesped.class);
 		
 		// execute query and get result list
-		List<Employee> employees = theQuery.getResultList();
+		List<Huesped> huespedes = theQuery.getResultList();
 		
 		// return the results		
-		return employees;
+		return huespedes;
 	}
 
 
 	@Override
-	public Employee findById(int theId) {
+	public Huesped findById(int theId) {
 
 		// get the current hibernate session
 		Session currentSession = entityManager.unwrap(Session.class);
 		
 		// get the employee
-		Employee theEmployee =
-				currentSession.get(Employee.class, theId);
+		Huesped theHuesped =
+				currentSession.get(Huesped.class, theId);
 		
 		// return the employee
-		return theEmployee;
+		return theHuesped;
 	}
 
 
 	@Override
-	public void save(Employee theEmployee) {
+	public void save(Huesped theHuesped) {
 
 		// get the current hibernate session
 		Session currentSession = entityManager.unwrap(Session.class);
 		
 		// save employee
-		currentSession.saveOrUpdate(theEmployee);
+		currentSession.saveOrUpdate(theHuesped);
 	}
 
 
@@ -77,9 +77,9 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 		// delete object with primary key
 		Query theQuery = 
 				currentSession.createQuery(
-						"delete from Employee where id=:employeeId");
+						"delete from Huesped where id=:huespedId");
 		
-		theQuery.setParameter("employeeId", theId);
+		theQuery.setParameter("huespedId", theId);
 		
 		theQuery.executeUpdate();
 	}

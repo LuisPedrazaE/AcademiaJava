@@ -6,8 +6,8 @@ import lombok.*;
 @Data 
 @NoArgsConstructor @AllArgsConstructor
 @Entity
-@Table(name="employee")
-public class Employee {
+@Table(name="huesped")
+public class Huesped {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -15,10 +15,10 @@ public class Employee {
 	private int id;
 	
 	@Column(name="first_name")
-	private String firstName;
+	private String Nombre;
 	
 	@Column(name="last_name")
-	private String lastName;
+	private String Apellido;
 	
 	@Column(name="email")
 	private String email;
