@@ -33,12 +33,12 @@ public class HuespedDAOJdbcImpl implements HuespedDAO {
 
 				// retrieve data from result set row
 				int id = myRs.getInt("id");
-				String firstName = myRs.getString("first_name");
-				String lastName = myRs.getString("last_name");
+				String nombre = myRs.getString("first_name");
+				String apellido = myRs.getString("last_name");
 				String email = myRs.getString("email");
 
 				// create new student object
-				Huesped tempHuesped = new Huesped(id, firstName, lastName, email);
+				Huesped tempHuesped = new Huesped(id, nombre, apellido, email);
 
 				// add it to the list of students
 				listaHuespedes.add(tempHuesped);
@@ -61,12 +61,12 @@ public class HuespedDAOJdbcImpl implements HuespedDAO {
 
 			// retrieve data from result set row
 			if (myRs.next()) {
-				String firstName = myRs.getString("first_name");
-				String lastName = myRs.getString("last_name");
+				String nombre = myRs.getString("first_name");
+				String apellido = myRs.getString("last_name");
 				String email = myRs.getString("email");
 
 				// use the studentId during construction
-				theHuesped = new Huesped(theId, firstName, lastName, email);
+				theHuesped = new Huesped(theId, nombre, apellido, email);
 			} else {
 				throw new SQLException("Could not find huesped id: " + theId);
 			}

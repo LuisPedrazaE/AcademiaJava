@@ -15,10 +15,10 @@ public class Huesped {
 	private int id;
 	
 	@Column(name="first_name")
-	private String Nombre;
+	private String nombre;
 	
 	@Column(name="last_name")
-	private String Apellido;
+	private String apellido;
 	
 	@Column(name="email")
 	private String email;

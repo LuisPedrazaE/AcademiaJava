@@ -35,7 +35,7 @@ public class HuespedRestController {
 	// add mapping for GET /employees/{employeeId}
 	
 	@GetMapping("/huespedes/{huespedId}")
-	public Huesped getEmployee(@PathVariable int huespedId) throws Exception {
+	public Huesped getHuesped(@PathVariable int huespedId) throws Exception {
 		
 		Huesped theHuesped = huespedService.findById(huespedId);
 		
@@ -49,7 +49,7 @@ public class HuespedRestController {
 	// add mapping for POST /employees - add new employee
 	
 	@PostMapping("/huespedes")
-	public Huesped addEmployee(@RequestBody Huesped theHuesped) {
+	public Huesped addHuesped(@RequestBody Huesped theHuesped) {
 		
 		// also just in case they pass an id in JSON ... set id to 0
 		// this is to force a save of new item ... instead of update
@@ -64,7 +64,8 @@ public class HuespedRestController {
 	// add mapping for PUT /employees - update existing employee
 	
 	@PutMapping("/huespedes")
-	public Huesped updateEmployee(@RequestBody Huesped theHuesped) {
+	public Huesped updateHuesped(@RequestBody Huesped theHuesped) {
+		
 		
 		huespedService.save(theHuesped);
 		
@@ -74,7 +75,7 @@ public class HuespedRestController {
 	// add mapping for DELETE /employees/{employeeId} - delete employee
 	
 	@DeleteMapping("/huespedes/{huespedId}")
-	public String deleteEmployee(@PathVariable int huespedId) {
+	public String deleteHuesped(@PathVariable int huespedId) {
 		
 		Huesped tempHuesped = huespedService.findById(huespedId);
 		
