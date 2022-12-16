@@ -1,7 +1,7 @@
 package com.javatechie.spring.batch.config;
 
-import com.javatechie.spring.batch.entity.Customer;
-import com.javatechie.spring.batch.repository.CustomerRepository;
+import com.javatechie.spring.batch.entity.Paciente;
+import com.javatechie.spring.batch.repository.PacienteRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -29,28 +29,28 @@ public class SpringBatchConfig {
 
     private JobBuilderFactory jobBuilderFactory;
     private StepBuilderFactory stepBuilderFactory;
-    private CustomerRepository customerRepository;
+    private PacienteRepository pacienteRepository;
 
 	@Bean
-    public FlatFileItemReader<Customer> reader() {
-        FlatFileItemReader<Customer> itemReader = new FlatFileItemReader<>();
-        itemReader.setResource(new FileSystemResource("src/main/resources/customers.csv"));
+    public FlatFileItemReader<Paciente> reader() {
+        FlatFileItemReader<Paciente> itemReader = new FlatFileItemReader<>();
+        itemReader.setResource(new FileSystemResource("src/main/resources/pacientes.csv"));
         itemReader.setName("csvReader");
         itemReader.setLinesToSkip(1);
         itemReader.setLineMapper(lineMapper());
         return itemReader;
     }
 
-    private LineMapper<Customer> lineMapper() {
-        DefaultLineMapper<Customer> lineMapper = new DefaultLineMapper<>();
+    private LineMapper<Paciente> lineMapper() {
+        DefaultLineMapper<Paciente> lineMapper = new DefaultLineMapper<>();
 
         DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
-        lineTokenizer.setNames("id", "firstName", "lastName", "email", "gender", "contactNo", "country", "dob");
+        lineTokenizer.setNames("id", "nombre", "apellido", "email", "genero", "numContacto", "pais", "cumpleanos");
 
-        BeanWrapperFieldSetMapper<Customer> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
-        fieldSetMapper.setTargetType(Customer.class);
+        BeanWrapperFieldSetMapper<Paciente> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
+        fieldSetMapper.setTargetType(Paciente.class);
 
         lineMapper.setLineTokenizer(lineTokenizer);
         lineMapper.setFieldSetMapper(fieldSetMapper);
@@ -59,21 +59,21 @@ public class SpringBatchConfig {
     }
 
     @Bean
-    public CustomerProcessor processor() {
-        return new CustomerProcessor();
+    public PacienteProcessor processor() {
+        return new PacienteProcessor();
     }
 
     @Bean
-    public RepositoryItemWriter<Customer> writer() {
-        RepositoryItemWriter<Customer> writer = new RepositoryItemWriter<>();
-        writer.setRepository(customerRepository);
+    public RepositoryItemWriter<Paciente> writer() {
+        RepositoryItemWriter<Paciente> writer = new RepositoryItemWriter<>();
+        writer.setRepository(pacienteRepository);
         writer.setMethodName("save");
         return writer;
     }
 
     @Bean
     public Step step1() {
-        return stepBuilderFactory.get("csv-step").<Customer, Customer>chunk(10)
+        return stepBuilderFactory.get("csv-step").<Paciente, Paciente>chunk(10)
                 .reader(reader())
                 .processor(processor())
                 .writer(writer())
@@ -83,7 +83,7 @@ public class SpringBatchConfig {
 
     @Bean
     public Job runJob() {
-        return jobBuilderFactory.get("importCustomers")
+        return jobBuilderFactory.get("importPacientes")
                 .flow(step1()).end().build();
 
     }
