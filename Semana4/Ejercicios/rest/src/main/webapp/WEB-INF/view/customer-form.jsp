@@ -34,13 +34,13 @@
 			<table>
 				<tbody>
 					<tr>
-						<td><label>First name:</label></td>
-						<td><form:input path="firstName" /></td>
+						<td><label>Nombre:</label></td>
+						<td><form:input path="nombre" /></td>
 					</tr>
 				
 					<tr>
-						<td><label>Last name:</label></td>
-						<td><form:input path="lastName" /></td>
+						<td><label>Apellido:</label></td>
+						<td><form:input path="apellido" /></td>
 					</tr>
 
 					<tr>
