@@ -45,29 +45,29 @@
 				</tr>
 				
 				<!-- loop over and print our customers -->
-				<c:forEach var="tempCustomer" items="${customers}">
+				<c:forEach var="tempHuesped" items="${huespedes}">
 				
 					<!-- construct an "update" link with customer id -->
-					<c:url var="updateLink" value="/customer/showFormForUpdate">
-						<c:param name="customerId" value="${tempCustomer.id}" />
+					<c:url var="updateLink" value="/huesped/showFormForUpdate">
+						<c:param name="huespedId" value="${tempHuesped.id}" />
 					</c:url>					
 
 					<!-- construct an "delete" link with customer id -->
-					<c:url var="deleteLink" value="/customer/delete">
-						<c:param name="customerId" value="${tempCustomer.id}" />
+					<c:url var="deleteLink" value="/huesped/delete">
+						<c:param name="huespedId" value="${tempHuesped.id}" />
 					</c:url>					
 					
 					<tr>
-						<td> ${tempCustomer.nombre} </td>
-						<td> ${tempCustomer.apellido} </td>
-						<td> ${tempCustomer.email} </td>
+						<td> ${tempHuesped.nombre} </td>
+						<td> ${tempHuesped.apellido} </td>
+						<td> ${tempHuesped.email} </td>
 						
 						<td>
 							<!-- display the update link -->
 							<a href="${updateLink}">Actualizar</a>
 							|
 							<a href="${deleteLink}"
-							   onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Eliminar</a>
+							   onclick="if (!(confirm('Are you sure you want to delete this huesped?'))) return false">Eliminar</a>
 						</td>
 						
 					</tr>

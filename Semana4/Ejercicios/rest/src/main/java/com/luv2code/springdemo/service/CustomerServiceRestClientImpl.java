@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import com.luv2code.springdemo.model.Huesped;
 
 @Service
-public class CustomerServiceRestClientImpl implements CustomerService {
+public class CustomerServiceRestClientImpl implements HuespedService {
 
 	private RestTemplate restTemplate;
 
@@ -33,74 +33,74 @@ public class CustomerServiceRestClientImpl implements CustomerService {
 	}
 	
 	@Override
-	public List<Huesped> getCustomers() {
+	public List<Huesped> getHuespedes() {
 		
-		logger.info("***OBTENER LISTA DE CLIENTES DESDE EL SERVICE REST CLIENTE");
-		logger.info("in getCustomers(): Calling REST API " + crmRestUrl);
+		logger.info("***OBTENER LISTA DE HUESPEDES DESDE EL SERVICE REST HUESPED");
+		logger.info("in getHuespedes(): Calling REST API " + crmRestUrl);
 
 		// make REST call
 		ResponseEntity<List<Huesped>> responseEntity = 
 											restTemplate.exchange(crmRestUrl, HttpMethod.GET, null, 
 													 new ParameterizedTypeReference<List<Huesped>>() {});
 
-		// get the list of customers from response
-		List<Huesped> customers = responseEntity.getBody();
+		// get the list of huespedes from response
+		List<Huesped> huespedes = responseEntity.getBody();
 
-		logger.info("in getCustomers(): customers" + customers);
+		logger.info("in getHuespedes(): huespedes" + huespedes);
 		
-		return customers;
+		return huespedes;
 	}
 
 	@Override
-	public Huesped getCustomer(int theId) {
-		logger.info("***OBTENER UN CLIENTE DESDE EL SERVICE REST CLIENTE");
+	public Huesped getHuesped(int theId) {
+		logger.info("***OBTENER UN HUESPED DESDE EL SERVICE REST HUESPED");
 
-		logger.info("in getCustomer(): Calling REST API " + crmRestUrl);
+		logger.info("in getHuesped(): Calling REST API " + crmRestUrl);
 
 		// make REST call
-		Huesped theCustomer = 
+		Huesped theHuesped = 
 				restTemplate.getForObject(crmRestUrl + "/" + theId, 
 						Huesped.class);
 
-		logger.info("in saveCustomer(): theCustomer=" + theCustomer);
+		logger.info("in saveHuesped(): theHuesped=" + theHuesped);
 		
-		return theCustomer;
+		return theHuesped;
 	}
 
 	@Override
-	public void saveCustomer(Huesped theCustomer) {
+	public void saveHuesped(Huesped theHuesped) {
 
-		logger.info("in saveCustomer(): Calling REST API " + crmRestUrl);
+		logger.info("in saveHuesped(): Calling REST API " + crmRestUrl);
 		
-		int employeeId = theCustomer.getId();
+		int huespedId = theHuesped.getId();
 
 		// make REST call
-		if (employeeId == 0) {
+		if (huespedId == 0) {
 			// add employee
-			logger.info("***SALVAR UN CLIENTE DESDE EL SERVICE REST CLIENTE");
+			logger.info("***SALVAR UN HUESPED DESDE EL SERVICE REST HUESPED");
 
-			restTemplate.postForEntity(crmRestUrl, theCustomer, String.class);			
+			restTemplate.postForEntity(crmRestUrl, theHuesped, String.class);			
 		
 		} else {
-			// update employee
-			logger.info("***ACTUALIZAR UN CLIENTE DESDE EL SERVICE REST CLIENTE");
+			// update huesped
+			logger.info("***ACTUALIZAR UN HUESPED DESDE EL SERVICE REST HUESPED");
 
-			restTemplate.put(crmRestUrl, theCustomer);
+			restTemplate.put(crmRestUrl, theHuesped);
 		}
 
-		logger.info("in saveCustomer(): success");	
+		logger.info("in saveHuesped(): success");	
 	}
 
 	@Override
-	public void deleteCustomer(int theId) {
-		logger.info("***BORRAR UN CLIENTE DESDE EL SERVICE REST CLIENTE");
+	public void deleteHuesped(int theId) {
+		logger.info("***BORRAR UN HUESPED DESDE EL SERVICE REST HUESPED");
 
-		logger.info("in deleteCustomer(): Calling REST API " + crmRestUrl);
+		logger.info("in deleteHuesped(): Calling REST API " + crmRestUrl);
 
 		// make REST call
 		restTemplate.delete(crmRestUrl + "/" + theId);
 
-		logger.info("in deleteCustomer(): deleted customer theId=" + theId);
+		logger.info("in deleteHuesped(): deleted huesped theId=" + theId);
 	}
 
 }
